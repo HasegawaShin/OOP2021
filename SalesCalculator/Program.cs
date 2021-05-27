@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace SalesCalculator {
     class Program {
         static void Main(string[] args) {
+            // List<Sale> sales = ReadSales("Sales.csv");
         }
 
         // 売り上げデータを読み込み、Saleオブジェクトのリストを返す
