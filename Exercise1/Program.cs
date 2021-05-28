@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace Exercise1 {
     class Program {
         static void Main(string[] args) {
-            List<Song> songs = new List<Song>();
+            Song[] songs = new Song[2];
 
-            songs.Add(new Song("Lemon", "米津玄師", 240));
-            songs.Add(new Song("Loser", "米津玄師", 230));
+            songs[0] = new Song("Lemon", "米津玄師", 240);
+            songs[1] = new Song("Loser", "米津玄師", 230);
+
+            PrintSongs(songs);
 
         }
 
