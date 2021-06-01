@@ -8,8 +8,8 @@ namespace Exercise1 {
     class Program {
         static void Main(string[] args) {
             var songs = new Song[] {
-                new Song("Lemon", "米津玄師", 240),
-                new Song("Loser", "米津玄師", 230),
+                new Song("マリーゴールド", "あいみょん", 240),
+                new Song("ハルノヒ", "あいみょん", 230),
             };
 
             PrintSongs(songs);
