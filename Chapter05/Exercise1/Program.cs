@@ -17,7 +17,6 @@ namespace Exercise1 {
             } else {
                 Console.WriteLine("等しくない");
             }
-
             Console.WriteLine("-------------------");
             #endregion
 
