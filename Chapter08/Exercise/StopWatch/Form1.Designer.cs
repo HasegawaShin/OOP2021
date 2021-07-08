@@ -25,11 +25,11 @@ namespace StopWatch {
         /// </summary>
         private void InitializeComponent() {
             this.lbTimerDisp = new System.Windows.Forms.Label();
-            this.tbLap = new System.Windows.Forms.TextBox();
             this.btStart = new System.Windows.Forms.Button();
             this.btReset = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btLap = new System.Windows.Forms.Button();
+            this.lbLapDisp = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbTimerDisp
@@ -41,15 +41,6 @@ namespace StopWatch {
             this.lbTimerDisp.Size = new System.Drawing.Size(253, 56);
             this.lbTimerDisp.TabIndex = 0;
             this.lbTimerDisp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tbLap
-            // 
-            this.tbLap.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbLap.Location = new System.Drawing.Point(304, 33);
-            this.tbLap.Multiline = true;
-            this.tbLap.Name = "tbLap";
-            this.tbLap.Size = new System.Drawing.Size(211, 228);
-            this.tbLap.TabIndex = 1;
             // 
             // btStart
             // 
@@ -95,33 +86,42 @@ namespace StopWatch {
             this.btLap.UseVisualStyleBackColor = true;
             this.btLap.Click += new System.EventHandler(this.btLap_Click);
             // 
+            // lbLapDisp
+            // 
+            this.lbLapDisp.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbLapDisp.FormattingEnabled = true;
+            this.lbLapDisp.ItemHeight = 24;
+            this.lbLapDisp.Location = new System.Drawing.Point(311, 32);
+            this.lbLapDisp.Name = "lbLapDisp";
+            this.lbLapDisp.Size = new System.Drawing.Size(208, 220);
+            this.lbLapDisp.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 289);
+            this.Controls.Add(this.lbLapDisp);
             this.Controls.Add(this.btLap);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btReset);
             this.Controls.Add(this.btStart);
-            this.Controls.Add(this.tbLap);
             this.Controls.Add(this.lbTimerDisp);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label lbTimerDisp;
-        private System.Windows.Forms.TextBox tbLap;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btReset;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btLap;
+        private System.Windows.Forms.ListBox lbLapDisp;
     }
 }
 

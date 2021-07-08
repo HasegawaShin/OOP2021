@@ -38,6 +38,7 @@ namespace StopWatch {
 
         private void btReset_Click(object sender, EventArgs e) {
             lbTimerDisp.Text = "00:00:00.00";
+            lbLapDisp.Items.Clear();
             sw.Reset();
         }
 
@@ -46,7 +47,7 @@ namespace StopWatch {
         }
 
         private void btLap_Click(object sender, EventArgs e) {
-            tbLap.Text += sw.Elapsed.ToString(@"hh\:mm\:ss\.ff") + "\r\n";
+            lbLapDisp.Items.Add(sw.Elapsed.ToString(@"hh\:mm\:ss\.ff"));
         }
     }
 }
