@@ -22,10 +22,6 @@ namespace Sample0823 {
 
             double result = Math.Pow(value, jyou);
 
-            // for (int i = 0; i < jyou; i++) {
-            //     result = result * value;
-            // }
-
             Result.Text = result.ToString();
         }
     }
