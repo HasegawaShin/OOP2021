@@ -35,6 +35,13 @@ namespace Exercise1 {
 
         private static void Exercise1_2(string file) {
             var xdoc = XDocument.Load(file);
+            var xelements = xdoc.Root.Elements().OrderByDescending(x => (string)(x.Element("firstplayed")));
+
+            foreach (var xelement in xelements) {
+                var xKanjiName = xelement.Element("name").Attribute("kanji");
+
+                Console.WriteLine("{0}", xKanjiName.Value);
+            }
         }
 
         private static void Exercise1_3(string file) {
