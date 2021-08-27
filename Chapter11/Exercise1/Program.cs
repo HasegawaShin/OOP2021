@@ -23,24 +23,27 @@ namespace Exercise1 {
 
         private static void Exercise1_1(string file) {
             var xdoc = XDocument.Load(file);
-            var xelements = xdoc.Root.Elements();
+            var sports = xdoc.Root.Elements()
+                             .Select(x => new {
+                                 Name = x.Element("name").Value,
+                                 Teammembers = x.Element("teammembers").Value
+                             });
 
-            foreach (var xelement in xelements) {
-                var xname = xelement.Element("name");
-                var xteammembers = xelement.Element("teammembers");
-
-                Console.WriteLine("{0}{1}人", xname.Value, xteammembers.Value);
+            foreach (var sport in sports) {
+                Console.WriteLine("{0}{1}人", sport.Name, sport.Teammembers);
             }
         }
 
         private static void Exercise1_2(string file) {
             var xdoc = XDocument.Load(file);
-            var xelements = xdoc.Root.Elements().OrderByDescending(x => (string)(x.Element("firstplayed")));
+            var sports = xdoc.Root.Elements()
+                             .Select(x => new {
+                                 Firstplayed = x.Element("firstplayed").Value,
+                                 Name = x.Element("name").Attribute("kanji").Value
+                             }).OrderBy(x => int.Parse(x.Firstplayed));
 
-            foreach (var xelement in xelements) {
-                var xKanjiName = xelement.Element("name").Attribute("kanji");
-
-                Console.WriteLine("{0}", xKanjiName.Value);
+            foreach (var sport in sports) {
+                Console.WriteLine("{0}", sport.Name);
             }
         }
 
