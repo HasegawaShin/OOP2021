@@ -65,18 +65,20 @@ namespace Exercise1 {
         }
 
         private static void Exercise1_4(string file) {
-            var newfile = "sports.xml";
 
+            var newfile = "sports.xml"; // 出力する新しいファイル
+
+            //  追加先のXMLファイル
+            var xdoc = XDocument.Load(file);
+
+            // 追加するデータ
             var element = new XElement("ballSports",
                               new XElement("name", "サッカー", new XAttribute("kanji", "蹴球")),
                               new XElement("teammembers", "11"),
-                              new XElement("firstplayed", "1800")
+                              new XElement("firstplayed", "1863")
                               );
 
-            var xdoc = XDocument.Load(newfile);
-            xdoc.Root.Add(file);
-            xdoc.Root.Add(element);
-
+            xdoc.Root.Add(element); // 追加先へ追加
             xdoc.Save(newfile);
         }
     }
