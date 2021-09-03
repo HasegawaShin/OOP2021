@@ -89,12 +89,13 @@ namespace Section04 {
         private int input() {
 
             var regionDic = new Dictionary<string, int>() {
-                {"前橋", 4210}, // 前橋
-                {"みなかみ", 4220}, // みなかみ
-                {"宇都宮", 4110}, // 宇都宮
-                {"水戸", 4010}, // 水戸
+                {"前橋", 4210}, 
+                {"みなかみ", 4220}, 
+                {"宇都宮", 4110}, 
+                {"水戸", 4010}, 
             };
-            var vList = new List<int>(regionDic.Values);
+            // regionDicのValueをList格納して、indexでValueを取り出せるようにする
+            var regionValuesList = new List<int>(regionDic.Values); 
 
             Console.WriteLine("地域コードを入力");
             
@@ -117,7 +118,7 @@ namespace Section04 {
                 return code;
             }
 
-            return vList[regionNum - 1];
+            return regionValuesList[regionNum - 1];
         }
 
 
