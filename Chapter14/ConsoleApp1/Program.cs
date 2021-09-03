@@ -17,7 +17,7 @@ namespace Section04 {
         // コンストラクタ
         public Program() {
             Console.WriteLine("Yahoo!週間天気予報");
-            Console.WriteLine();
+            Console.WriteLine(); // 改行
 
             var results = GetWeatherReportFromYahoo(input());
             foreach (var s in results) {
@@ -88,33 +88,36 @@ namespace Section04 {
         // 入力された値に対応する地域コードを返す
         private int input() {
 
-            var regionCode = new Dictionary<int, int>() {
-                {1, 4210}, // 前橋
-                {2, 4220}, // みなかみ
-                {3, 4110}, // 宇都宮
-                {4, 4010}, // 水戸
+            var regionDic = new Dictionary<string, int>() {
+                {"前橋", 4210}, // 前橋
+                {"みなかみ", 4220}, // みなかみ
+                {"宇都宮", 4110}, // 宇都宮
+                {"水戸", 4010}, // 水戸
             };
+            var vList = new List<int>(regionDic.Values);
 
             Console.WriteLine("地域コードを入力");
-            Console.WriteLine("1:前橋");
-            Console.WriteLine("2:みなかみ");
-            Console.WriteLine("3:宇都宮");
-            Console.WriteLine("4:水戸");
+            
+            int num = 1;
+            foreach (KeyValuePair<string, int> pair in regionDic) {
+                Console.WriteLine("{0}:{1}", num++, pair.Key);
+            }
             Console.WriteLine("9:その他(直接入力)");
-            Console.WriteLine();
-            Console.Write(">");
-            int num = int.Parse(Console.ReadLine());
+            Console.WriteLine();　// 改行
+            Console.Write(">"); 
 
-            if (num == 9) {
+            int regionNum = int.Parse(Console.ReadLine());
+
+            if (regionNum == 9) {
                 Console.WriteLine("コードを入力してください");
-                Console.WriteLine();
+                Console.WriteLine(); // 改行
                 Console.Write(">");
                 int code = int.Parse(Console.ReadLine());
 
-                regionCode.Add(num, code);
+                return code;
             }
 
-            return regionCode[num];
+            return vList[regionNum - 1];
         }
 
 
