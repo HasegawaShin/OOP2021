@@ -16,10 +16,10 @@ namespace Section04 {
 
         // コンストラクタ
         public Program() {
-            // DownloadString();
-            // DownloadFileAsync();
-            // OpenReadSample();
-            var results = GetWeatherReportFromYahoo(4610);
+            Console.WriteLine("Yahoo!週間天気予報");
+            Console.WriteLine();
+
+            var results = GetWeatherReportFromYahoo(input());
             foreach (var s in results) {
                 Console.WriteLine(s);
             }
@@ -83,6 +83,38 @@ namespace Section04 {
                     yield return s;
                 }
             }
+        }
+
+        // 入力された値に対応する地域コードを返す
+        private int input() {
+
+            var regionCode = new Dictionary<int, int>() {
+                {1, 4210}, // 前橋
+                {2, 4220}, // みなかみ
+                {3, 4110}, // 宇都宮
+                {4, 4010}, // 水戸
+            };
+
+            Console.WriteLine("地域コードを入力");
+            Console.WriteLine("1:前橋");
+            Console.WriteLine("2:みなかみ");
+            Console.WriteLine("3:宇都宮");
+            Console.WriteLine("4:水戸");
+            Console.WriteLine("9:その他(直接入力)");
+            Console.WriteLine();
+            Console.Write(">");
+            int num = int.Parse(Console.ReadLine());
+
+            if (num == 9) {
+                Console.WriteLine("コードを入力してください");
+                Console.WriteLine();
+                Console.Write(">");
+                int code = int.Parse(Console.ReadLine());
+
+                regionCode.Add(num, code);
+            }
+
+            return regionCode[num];
         }
 
 
