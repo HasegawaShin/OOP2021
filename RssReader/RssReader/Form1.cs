@@ -20,6 +20,9 @@ namespace RssReader {
             setRssTitle(tbUrl.Text);
         }
 
+        List<XElement> listTitles = new List<XElement>(); // タイトルを保存
+        List<string> listLinks = new List<string>(); // リンクを保存
+
         // 指定したURL先からXMLデータを取得し、title要素を取得し、リストボックスへセットする
         private void setRssTitle(string uri) {
             using (var wc = new WebClient()) {
@@ -30,14 +33,20 @@ namespace RssReader {
                 XDocument xdoc = XDocument.Load(stream);
                 var nodes = xdoc.Root.Descendants("title");
 
-                var listNodes = new List<XElement>(nodes);
+                //var listTitles = new List<XElement>(nodes); // タイトルを保存
+                //var listLinks = new List<string>(); // リンクを保存
+                listTitles = nodes.ToList();
 
-                for (int i = 1; i < listNodes.Count; i++) {
-                    lbTitle.Items.Add(listNodes[i].Value);
+                for (int i = 1; i < listTitles.Count; i++) {
+                    lbTitle.Items.Add(listTitles[i].Value);
+                    listLinks.Add(listTitles[i].Descendants("link").ToString());
                 }
 
             }
         }
 
+        private void lbTitle_SelectedIndexChanged(object sender, EventArgs e) {
+            wbBrowser.Url = new Uri(listLinks[lbTitle.SelectedIndex]);
+        }
     }
 }
