@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Linq;
+
+namespace RssReader {
+    public partial class Form1 : Form {
+        public Form1() {
+            InitializeComponent();
+        }
+
+        private void btRead_Click(object sender, EventArgs e) {
+            setRssTitle(tbUrl.Text);
+        }
+
+        // 指定したURL先からXMLデータを取得し、title要素を取得し、リストボックスへセットする
+        private void setRssTitle(string uri) {
+            using (var wc = new WebClient()) {
+                wc.Headers.Add("Content-type", "charset=UTF8");
+
+                var stream = wc.OpenRead(uri);
+
+                XDocument xdoc = XDocument.Load(stream);
+                var nodes = xdoc.Root.Descendants("title");
+
+                var listNodes = new List<XElement>(nodes);
+
+                for (int i = 1; i < listNodes.Count; i++) {
+                    lbTitle.Items.Add(listNodes[i].Value);
+                }
+
+            }
+        }
+
+    }
+}

@@ -94,6 +94,7 @@ namespace Section04 {
                 {"宇都宮", 4110}, 
                 {"水戸", 4010}, 
             };
+
             // regionDicのValueをList格納して、indexでValueを取り出せるようにする
             var regionValuesList = new List<int>(regionDic.Values); 
 
@@ -105,8 +106,7 @@ namespace Section04 {
             }
             Console.WriteLine("9:その他(直接入力)");
             Console.WriteLine();　// 改行
-            Console.Write(">"); 
-
+            Console.Write(">");
             int regionNum = int.Parse(Console.ReadLine());
 
             if (regionNum == 9) {
