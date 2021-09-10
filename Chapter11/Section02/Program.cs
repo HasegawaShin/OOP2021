@@ -15,7 +15,7 @@ namespace Section02 {
             elements.Remove();
             xdoc.Save("novelists.xml"); // XMLファイルへの保存
 
-            #region 登録
+
             //string elmstring =
             //  @"<novelist>
             //      <name kana=""きくち かん"">菊池 寛</name>

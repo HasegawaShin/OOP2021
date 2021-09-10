@@ -12,6 +12,9 @@ using System.Xml.Linq;
 
 namespace RssReader {
     public partial class Form1 : Form {
+
+        IEnumerable<ItemDate> items = null;
+
         public Form1() {
             InitializeComponent();
         }
@@ -19,8 +22,6 @@ namespace RssReader {
         private void btRead_Click(object sender, EventArgs e) {
             setRssTitle(tbUrl.Text);
         }
-
-        List<string> listLinks = new List<string>(); // リンクを保存
 
         // 指定したURL先からXMLデータを取得し、title要素を取得し、リストボックスへセットする
         private void setRssTitle(string uri) {
@@ -30,18 +31,25 @@ namespace RssReader {
                 var stream = wc.OpenRead(uri);
 
                 XDocument xdoc = XDocument.Load(stream);
-                var listTitles = xdoc.Root.Descendants("title").ToList();
 
-                for (int i = 1; i < listTitles.Count; i++) {
-                    lbTitle.Items.Add(listTitles[i].Value);
-                    listLinks.Add(listTitles[i].Elements("link").Descendants().ToString());
+                items = xdoc.Root.Descendants("item").Select(x => new ItemDate{
+                    Title = (string)x.Element("title"),
+                    Link = (string)x.Element("link"),
+                    PubDate = (DateTime)x.Element("pubDate"),
+                    Description = (string)x.Element("description")
+                });
+
+                foreach (var item in items) {
+                    lbTitle.Items.Add(item.Title);
                 }
 
             }
         }
 
-        private void lbTitle_SelectedIndexChanged(object sender, EventArgs e) {
-            //wbBrowser.Url = new Uri(listLinks[lbTitle.SelectedIndex]);
+        private void lbTitle_Click(object sender, EventArgs e) {
+            string link = (items.ToArray())[lbTitle.SelectedIndex].Link;
+            wbBrowser.Url = new Uri(link);
         }
+
     }
 }
