@@ -28,7 +28,8 @@ namespace RssReader {
             this.tbUrl = new System.Windows.Forms.TextBox();
             this.btRead = new System.Windows.Forms.Button();
             this.lbTitle = new System.Windows.Forms.ListBox();
-            this.wbBrowser = new System.Windows.Forms.WebBrowser();
+            this.lbArticleInfo = new System.Windows.Forms.Label();
+            this.btOpen_Form2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -61,28 +62,42 @@ namespace RssReader {
             // 
             // lbTitle
             // 
+            this.lbTitle.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.lbTitle.FormattingEnabled = true;
-            this.lbTitle.ItemHeight = 12;
-            this.lbTitle.Location = new System.Drawing.Point(16, 63);
+            this.lbTitle.ItemHeight = 16;
+            this.lbTitle.Location = new System.Drawing.Point(16, 75);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(241, 544);
+            this.lbTitle.Size = new System.Drawing.Size(241, 532);
             this.lbTitle.TabIndex = 3;
             this.lbTitle.Click += new System.EventHandler(this.lbTitle_Click);
             // 
-            // wbBrowser
+            // lbArticleInfo
             // 
-            this.wbBrowser.Location = new System.Drawing.Point(263, 63);
-            this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbBrowser.Name = "wbBrowser";
-            this.wbBrowser.Size = new System.Drawing.Size(517, 544);
-            this.wbBrowser.TabIndex = 4;
+            this.lbArticleInfo.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.lbArticleInfo.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbArticleInfo.Location = new System.Drawing.Point(263, 169);
+            this.lbArticleInfo.Name = "lbArticleInfo";
+            this.lbArticleInfo.Size = new System.Drawing.Size(514, 325);
+            this.lbArticleInfo.TabIndex = 5;
+            // 
+            // btOpen_Form2
+            // 
+            this.btOpen_Form2.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btOpen_Form2.Location = new System.Drawing.Point(658, 568);
+            this.btOpen_Form2.Name = "btOpen_Form2";
+            this.btOpen_Form2.Size = new System.Drawing.Size(119, 39);
+            this.btOpen_Form2.TabIndex = 6;
+            this.btOpen_Form2.Text = "Webの表示";
+            this.btOpen_Form2.UseVisualStyleBackColor = true;
+            this.btOpen_Form2.Click += new System.EventHandler(this.btOpen_Form2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 624);
-            this.Controls.Add(this.wbBrowser);
+            this.Controls.Add(this.btOpen_Form2);
+            this.Controls.Add(this.lbArticleInfo);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.btRead);
             this.Controls.Add(this.tbUrl);
@@ -100,7 +115,8 @@ namespace RssReader {
         private System.Windows.Forms.TextBox tbUrl;
         private System.Windows.Forms.Button btRead;
         private System.Windows.Forms.ListBox lbTitle;
-        private System.Windows.Forms.WebBrowser wbBrowser;
+        private System.Windows.Forms.Label lbArticleInfo;
+        private System.Windows.Forms.Button btOpen_Form2;
     }
 }
 

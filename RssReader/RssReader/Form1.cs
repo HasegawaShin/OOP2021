@@ -13,6 +13,8 @@ using System.Xml.Linq;
 namespace RssReader {
     public partial class Form1 : Form {
 
+        // https://news.yahoo.co.jp/rss/topics/top-picks.xml
+
         IEnumerable<ItemDate> items = null;
 
         public Form1() {
@@ -47,9 +49,17 @@ namespace RssReader {
         }
 
         private void lbTitle_Click(object sender, EventArgs e) {
-            string link = (items.ToArray())[lbTitle.SelectedIndex].Link;
-            wbBrowser.Url = new Uri(link);
+            lbArticleInfo.Text = (items.ToArray())[lbTitle.SelectedIndex].PubDate.ToString() + "\n";
+            lbArticleInfo.Text += "【概要】\n";
+            lbArticleInfo.Text += (items.ToArray())[lbTitle.SelectedIndex].Description;
         }
 
+        private void btOpen_Form2_Click(object sender, EventArgs e) {
+            var webForm = new Form2();
+            webForm.Show();
+            string link = (items.ToArray())[lbTitle.SelectedIndex].Link;
+            webForm.openBrowser(link);
+            
+        }
     }
 }
