@@ -14,6 +14,7 @@ namespace RssReader {
             InitializeComponent();
         }
 
+        // linkを受け取ってForm2に表示する
         public void openBrowser(string link) {
             wbBrowser.Url = new Uri(link);
         }
