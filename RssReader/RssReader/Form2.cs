@@ -19,6 +19,11 @@ namespace RssReader {
             wbBrowser.Url = new Uri(link);
         }
 
+        private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
+            btBack.Enabled = wbBrowser.CanGoBack;
+            btForward.Enabled = wbBrowser.CanGoForward;
+        }
+
         private void btForward_Click(object sender, EventArgs e) {
             wbBrowser.GoForward();
         }
@@ -26,5 +31,6 @@ namespace RssReader {
         private void btBack_Click(object sender, EventArgs e) {
             wbBrowser.GoBack();
         }
+
     }
 }
