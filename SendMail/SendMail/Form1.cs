@@ -29,8 +29,12 @@ namespace SendMail {
                 mailMessage.From = new MailAddress(settings.MailAdder);
                 // 宛先(To)
                 mailMessage.To.Add(tbTo.Text);
-                mailMessage.CC.Add(tbCc.Text);
-                mailMessage.Bcc.Add(tbBcc.Text);
+                if (tbCc.Text != "") {
+                    mailMessage.CC.Add(tbCc.Text);
+                }
+                if (tbBcc.Text != "") {
+                    mailMessage.Bcc.Add(tbBcc.Text);
+                }
 
                 // 件名(タイトル)
                 mailMessage.Subject = tbTitle.Text;
@@ -44,12 +48,25 @@ namespace SendMail {
                 smtpClient.Host = settings.Host;
                 smtpClient.Port = settings.Port;
                 smtpClient.EnableSsl = settings.Ssl;
-                smtpClient.Send(mailMessage);
 
-                MessageBox.Show("送信完了");
+                // 送信完了時に呼ばれるイベントハンドラの登録
+                smtpClient.SendCompleted += SmtpClient_SendCompleted;
+
+                string userState = "SendMail";
+                smtpClient.SendAsync(mailMessage, userState);
+                
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        // 送信完了時に呼ばれるイベント
+        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e) {
+            if (e.Error != null) {
+                MessageBox.Show(e.Error.Message);
+            } else {
+                MessageBox.Show("送信完了");
             }
         }
 
