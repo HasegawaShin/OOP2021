@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace SendMail {
     public partial class ConfigForm : Form {
@@ -42,13 +45,25 @@ namespace SendMail {
             this.Close();
         }
 
-        // 入力した値をSettingsクラスにセット
+        // 送信データ登録
         private void settingRegist() {
             settings.Host = tbHost.Text;
             settings.Port = int.Parse(tbPort.Text);
             settings.MailAdder = tbUserName.Text;
             settings.Pass = tbPass.Text;
             settings.Ssl = cbSsl.Checked;
+
+            // シリアル化
+            var xws = new XmlWriterSettings {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = "   ",
+            };
+
+            using (var writer = XmlWriter.Create("mailsetting.xml", xws)) {
+                var serializer = new DataContractSerializer(settings.GetType());
+                serializer.WriteObject(writer, settings);
+            }
         }
 
     }
