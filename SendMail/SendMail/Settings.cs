@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace SendMail {
     public class Settings {
@@ -24,8 +26,44 @@ namespace SendMail {
         public static Settings getInstance() {
             if (instance == null) {
                 instance = new Settings();
+
+                // XMLファイルを読み込み(逆シリアル化)【P303参照】
+                using (var reader = XmlReader.Create("mailsetting.xml")) {
+                    var serializer = new DataContractSerializer(typeof(Settings));
+                    var readSettings = serializer.ReadObject(reader) as Settings;
+
+                    instance.Host = readSettings.Host;
+                    instance.Port = readSettings.Port;
+                    instance.MailAdder = readSettings.MailAdder;
+                    instance.Pass = readSettings.Pass;
+                    instance.Ssl = readSettings.Ssl;
+                }
             }
             return instance;
+        }
+
+        // 送信データ登録
+        public void setSendConfig(string host, int port,
+                                  string mailAdder, string pass, bool ssl) {
+
+            Host = host;
+            Port = port;
+            MailAdder = mailAdder;
+            Pass = pass;
+            Ssl = ssl;
+
+            // ファイルへ書き出し(シリアル化)
+            var xws = new XmlWriterSettings {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = "   ",
+            };
+
+            using (var writer = XmlWriter.Create("mailsetting.xml", xws)) {
+                var serializer = new DataContractSerializer(this.GetType());
+                serializer.WriteObject(writer, this);
+            }
+
         }
 
         // 初期値

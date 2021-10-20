@@ -78,10 +78,6 @@ namespace SendMail {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            using (var reader = XmlReader.Create("mailsetting.xml")) {
-                var serializer = new DataContractSerializer(typeof(Settings));
-                settings = serializer.ReadObject(reader) as Settings;
-            }
         }
     }
 }

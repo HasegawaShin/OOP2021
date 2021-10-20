@@ -47,24 +47,17 @@ namespace SendMail {
 
         // 送信データ登録
         private void settingRegist() {
-            settings.Host = tbHost.Text;
-            settings.Port = int.Parse(tbPort.Text);
-            settings.MailAdder = tbUserName.Text;
-            settings.Pass = tbPass.Text;
-            settings.Ssl = cbSsl.Checked;
-
-            // シリアル化
-            var xws = new XmlWriterSettings {
-                Encoding = new System.Text.UTF8Encoding(false),
-                Indent = true,
-                IndentChars = "   ",
-            };
-
-            using (var writer = XmlWriter.Create("mailsetting.xml", xws)) {
-                var serializer = new DataContractSerializer(settings.GetType());
-                serializer.WriteObject(writer, settings);
-            }
+            
         }
 
+        // 設定画面をロードすると一度だけ実行されるイベントハンドラ
+        private void ConfigForm_Load(object sender, EventArgs e) {
+            tbHost.Text = settings.Host;
+            tbPort.Text = settings.Port.ToString();
+            tbUserName.Text = settings.MailAdder;
+            tbPass.Text = settings.Pass;
+            cbSsl.Checked = settings.Ssl;
+            tbSender.Text = settings.MailAdder;
+        }
     }
 }
