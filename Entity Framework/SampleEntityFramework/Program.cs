@@ -10,29 +10,31 @@ namespace SampleEntityFramework {
     class Program {
         static void Main(string[] args) {
             Console.WriteLine("# 1.1");
-            // Esercise1_1();
+            // Exercise1_1();
 
             Console.WriteLine();
             Console.WriteLine("# 1.2");
-            Esercise1_2();
+            Exercise1_2();
 
             Console.WriteLine();
             Console.WriteLine("# 1.3");
-            Esercise1_3();
+            Exercise1_3();
 
             Console.WriteLine();
             Console.WriteLine("# 1.4");
-            Esercise1_4();
+            Exercise1_4();
 
             Console.WriteLine();
             Console.WriteLine("# 1.5");
-            Esercise1_5();
+            Exercise1_5();
 
             // F5で実行してもすぐコンソール画面が消えないようにする
             Console.ReadLine();
         }
 
-        private static void Esercise1_1() {
+
+        #region Exercise
+        private static void Exercise1_1() {
             using (var db = new BooksDbContext()) {
                 var author1 = new Author {
                     Birthday = new DateTime(1888, 12, 16),
@@ -82,9 +84,9 @@ namespace SampleEntityFramework {
             }
         }
 
-        private static void Esercise1_2() {
+        private static void Exercise1_2() {
             using (var db = new BooksDbContext()) {
-                IEnumerable<Book> books = db.Books.ToList();
+                IEnumerable<Book> books = db.Books;
 
                 foreach (var book in books) {
                     Console.WriteLine("タイトル：" + book.Title);
@@ -94,9 +96,8 @@ namespace SampleEntityFramework {
             }
         }
 
-        private static void Esercise1_3() {
+        private static void Exercise1_3() {
             using (var db = new BooksDbContext()) {
-                // var books = db.Books.ToList();
                 var books = db.Books.Where(x => x.Title.Length == db.Books.Max(y => y.Title.Length));
 
                 foreach (var book in books)  {
@@ -107,7 +108,7 @@ namespace SampleEntityFramework {
             }
         }
 
-        private static void Esercise1_4() {
+        private static void Exercise1_4() {
             using (var db = new BooksDbContext()) {
                 var books = db.Books.OrderBy(x => x.PublishedYear).ToList();
 
@@ -119,24 +120,22 @@ namespace SampleEntityFramework {
             }
         }
 
-        private static void Esercise1_5() {
+        private static void Exercise1_5() {
             using (var db = new BooksDbContext()) {
-                var authors = db.Authors.OrderByDescending(x => x.Birthday).ToList();
+                var authors = db.Authors.OrderByDescending(x => x.Birthday);
 
                 foreach (var author in authors) {
-                    Console.WriteLine(author.Name + " " + author.Birthday.ToString("yyyy/MM/dd"));
+                    Console.WriteLine("● " + author.Name + " " + author.Birthday.ToString("yyyy/MM/dd"));
                     var books = db.Books.Where(x => x.Author.Name == author.Name);
-
                     foreach (var book in books) {
-                        Console.WriteLine("  " + book.Title + " " + book.PublishedYear);
+                        Console.WriteLine(book.Title + " " + book.PublishedYear);
                     }
                     Console.WriteLine();
                 }
                 
             }
         }
-
-
+        #endregion
 
         #region　P321～343
         // List 13-5
