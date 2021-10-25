@@ -31,6 +31,18 @@ namespace SendMail {
                 return;
             }
 
+            // 宛先情報が空の場合の処理
+            if (tbTo.Text == "" && tbCc.Text == "" && tbBcc.Text == "") {
+                MessageBox.Show("宛先情報が未入力です");
+                return;
+            }
+
+            // 本文が空白か空文字列だった場合の処理
+            if (tbMessage.Text == "" || tbMessage.Text == String.Empty) {
+                MessageBox.Show("本文入力が不正です");
+                return;
+            }
+
             try {
                 // メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
@@ -80,6 +92,13 @@ namespace SendMail {
             if (e.Error != null) {
                 MessageBox.Show(e.Error.Message);
             } else {
+                // 送信完了で入力情報クリア
+                tbTo.Text = "";
+                tbCc.Text = "";
+                tbBcc.Text = "";
+                tbTitle.Text = "";
+                tbMessage.Text = "";
+
                 MessageBox.Show("送信完了");
             }
         }

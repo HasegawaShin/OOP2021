@@ -32,7 +32,8 @@ namespace SendMail {
         // 適用ボタン
         private void btApply_Click(object sender, EventArgs e) {
             // Settingオブジェクトに入力データを渡して登録を行う
-            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text), tbUserName.Text, tbPass.Text, cbSsl.Checked);
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text), 
+                                   tbUserName.Text, tbPass.Text, cbSsl.Checked);
         }
 
         // OKボタン

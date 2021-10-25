@@ -42,6 +42,7 @@ namespace SendMail {
                         instance.Ssl = readSettings.Ssl;
                     }
                 }
+                // ファイルがない場合の処理
                 catch (Exception ex) {
                     Set = false; // データ未設定
                 }
@@ -59,7 +60,7 @@ namespace SendMail {
             Pass = pass;
             Ssl = ssl;
 
-            // ファイルへ書き出し(シリアル化)
+            // XMLファイルへ書き出し(シリアル化)
             var xws = new XmlWriterSettings {
                 Encoding = new System.Text.UTF8Encoding(false),
                 Indent = true,
