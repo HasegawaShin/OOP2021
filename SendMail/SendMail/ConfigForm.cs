@@ -38,18 +38,13 @@ namespace SendMail {
 
         // OKボタン
         private void btOk_Click(object sender, EventArgs e) {
-            this.settingRegist();
+            this.btApply_Click(sender, e);　// 適応ボタンの処理の呼び出し
             this.Close();
         }
 
         // キャンセルボタン
         private void btCancel_Click(object sender, EventArgs e) {
             this.Close();
-        }
-
-        // 送信データ登録
-        private void settingRegist() {
-            
         }
 
         // 設定画面をロードすると一度だけ実行されるイベントハンドラ

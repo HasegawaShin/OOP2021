@@ -21,7 +21,6 @@ namespace SendMail {
         private SmtpClient smtpClient = null;
 
         public Form1() {
-            // configForm.ShowDialog();
             InitializeComponent();
         }
 
@@ -85,6 +84,9 @@ namespace SendMail {
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+
+            // 送信中にボタンを押せなくする
+            btSend.Enabled = false;
         }
 
         // 送信完了時に呼ばれるイベント
@@ -101,6 +103,7 @@ namespace SendMail {
 
                 MessageBox.Show("送信完了");
             }
+            btSend.Enabled = true;
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
