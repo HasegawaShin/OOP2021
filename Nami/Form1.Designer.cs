@@ -37,9 +37,9 @@ namespace Nami_YarukiSwitch {
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.Location = new System.Drawing.Point(74, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 24);
+            this.label1.Size = new System.Drawing.Size(200, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "やる気ゲージ";
+            this.label1.Text = "菜実のやる気ゲージ";
             // 
             // lbGage
             // 
