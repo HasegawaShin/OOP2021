@@ -57,5 +57,8 @@ namespace AddressBook {
             tbMemo.Text = personDataGridView.CurrentRow.Cells[4].Value.ToString();
         }
 
+        private void btBirthdayFilter_Click(object sender, EventArgs e) {
+            this.personTableAdapter.FillByBirthday(this.infosys202114DataSet.Person, dtpBirthdaySearch.Value);
+        }
     }
 }

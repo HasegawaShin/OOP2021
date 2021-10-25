@@ -21,17 +21,18 @@ namespace SendMail {
 
         // デフォルトボタン
         private void btDefault_Click(object sender, EventArgs e) {
-            tbHost.Text = settings.sHost();
-            tbPort.Text = settings.sPort();
-            tbUserName.Text = settings.sMailAdder();
-            tbPass.Text = settings.sPass();
-            cbSsl.Checked = settings.bSsl();
-            tbSender.Text = settings.sMailAdder();
+            tbHost.Text = settings.sHost(); // ホスト名
+            tbPort.Text = settings.sPort(); // ポート番号
+            tbUserName.Text = settings.sMailAdder();　// ユーザー名
+            tbPass.Text = settings.sPass(); // パスワード
+            cbSsl.Checked = settings.bSsl(); // SSL
+            tbSender.Text = settings.sMailAdder(); // 送信元
         }
 
         // 適用ボタン
         private void btApply_Click(object sender, EventArgs e) {
-            this.settingRegist();
+            // Settingオブジェクトに入力データを渡して登録を行う
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text), tbUserName.Text, tbPass.Text, cbSsl.Checked);
         }
 
         // OKボタン

@@ -12,6 +12,8 @@ namespace SendMail {
 
         private static Settings instance = null;
 
+        public static bool Set { get; private set; } = true;
+
         public string Host { get; set; } // ホスト名
         public int Port { get; set; } // ポート番号
         public string  MailAdder{ get; set; } // メールアドレス
@@ -28,22 +30,27 @@ namespace SendMail {
                 instance = new Settings();
 
                 // XMLファイルを読み込み(逆シリアル化)【P303参照】
-                using (var reader = XmlReader.Create("mailsetting.xml")) {
-                    var serializer = new DataContractSerializer(typeof(Settings));
-                    var readSettings = serializer.ReadObject(reader) as Settings;
+                try {
+                    using (var reader = XmlReader.Create("mailsetting.xml")) {
+                        var serializer = new DataContractSerializer(typeof(Settings));
+                        var readSettings = serializer.ReadObject(reader) as Settings;
 
-                    instance.Host = readSettings.Host;
-                    instance.Port = readSettings.Port;
-                    instance.MailAdder = readSettings.MailAdder;
-                    instance.Pass = readSettings.Pass;
-                    instance.Ssl = readSettings.Ssl;
+                        instance.Host = readSettings.Host;
+                        instance.Port = readSettings.Port;
+                        instance.MailAdder = readSettings.MailAdder;
+                        instance.Pass = readSettings.Pass;
+                        instance.Ssl = readSettings.Ssl;
+                    }
+                }
+                catch (Exception ex) {
+                    Set = false; // データ未設定
                 }
             }
             return instance;
         }
 
         // 送信データ登録
-        public void setSendConfig(string host, int port,
+        public bool setSendConfig(string host, int port,
                                   string mailAdder, string pass, bool ssl) {
 
             Host = host;
@@ -64,6 +71,9 @@ namespace SendMail {
                 serializer.WriteObject(writer, this);
             }
 
+            Set = true;
+
+            return true; // 登録完了
         }
 
         // 初期値

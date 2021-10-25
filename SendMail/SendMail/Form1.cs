@@ -18,13 +18,19 @@ namespace SendMail {
         private ConfigForm configForm = new ConfigForm();
         // 設定情報
         private Settings settings = Settings.getInstance();
+        private SmtpClient smtpClient = null;
 
         public Form1() {
-            configForm.ShowDialog();
+            // configForm.ShowDialog();
             InitializeComponent();
         }
 
         private void btSend_Click(object sender, EventArgs e) {
+            if (! Settings.Set) {
+                MessageBox.Show("送信情報を設定してください");
+                return;
+            }
+
             try {
                 // メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
@@ -32,6 +38,7 @@ namespace SendMail {
                 mailMessage.From = new MailAddress(settings.MailAdder);
                 // 宛先(To)
                 mailMessage.To.Add(tbTo.Text);
+
                 if (tbCc.Text != "") {
                     mailMessage.CC.Add(tbCc.Text);
                 }
@@ -45,7 +52,11 @@ namespace SendMail {
                 mailMessage.Body = tbMessage.Text;
 
                 // SMTPを使ってメールを送信する
-                SmtpClient smtpClient = new SmtpClient();
+                if (smtpClient == null) {
+                    smtpClient = new SmtpClient();
+                    smtpClient.SendCompleted += SmtpClient_SendCompleted;
+                }
+                
                 // メール送信のための認証情報を設定(ユーザ名、パスワード)
                 smtpClient.Credentials = new NetworkCredential(settings.MailAdder, settings.Pass);
                 smtpClient.Host = settings.Host;
@@ -78,6 +89,14 @@ namespace SendMail {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            // 起動時に送信情報が未設定の場合設定画面を表示する
+            if (! Settings.Set) {
+                configForm.ShowDialog();
+            }
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
         }
     }
 }

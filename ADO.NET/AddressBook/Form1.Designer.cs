@@ -26,18 +26,9 @@ namespace AddressBook {
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.personDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.infosys202114DataSet = new AddressBook.infosys202114DataSet();
             this.btConnect = new System.Windows.Forms.Button();
             this.btNameFilter = new System.Windows.Forms.Button();
             this.tbNameSearch = new System.Windows.Forms.TextBox();
-            this.personTableAdapter = new AddressBook.infosys202114DataSetTableAdapters.PersonTableAdapter();
-            this.tableAdapterManager = new AddressBook.infosys202114DataSetTableAdapters.TableAdapterManager();
             this.btSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,9 +38,17 @@ namespace AddressBook {
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.tbTelephone = new System.Windows.Forms.TextBox();
             this.tbMemo = new System.Windows.Forms.TextBox();
-            this.tbBirthdaySearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btBirthdayFilter = new System.Windows.Forms.Button();
+            this.dtpBirthdaySearch = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.infosys202114DataSet = new AddressBook.infosys202114DataSet();
+            this.personTableAdapter = new AddressBook.infosys202114DataSetTableAdapters.PersonTableAdapter();
+            this.tableAdapterManager = new AddressBook.infosys202114DataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.personDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.infosys202114DataSet)).BeginInit();
@@ -77,51 +76,6 @@ namespace AddressBook {
             this.personDataGridView.TabIndex = 1;
             this.personDataGridView.SelectionChanged += new System.EventHandler(this.personDataGridView_SelectionChanged);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "No";
-            this.dataGridViewTextBoxColumn1.HeaderText = "No";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Birthday";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Birthday";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telephone";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Telephone";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Memo";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Memo";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // personBindingSource
-            // 
-            this.personBindingSource.DataMember = "Person";
-            this.personBindingSource.DataSource = this.infosys202114DataSet;
-            // 
-            // infosys202114DataSet
-            // 
-            this.infosys202114DataSet.DataSetName = "infosys202114DataSet";
-            this.infosys202114DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // btConnect
             // 
             this.btConnect.Location = new System.Drawing.Point(12, 400);
@@ -148,16 +102,6 @@ namespace AddressBook {
             this.tbNameSearch.Name = "tbNameSearch";
             this.tbNameSearch.Size = new System.Drawing.Size(182, 19);
             this.tbNameSearch.TabIndex = 4;
-            // 
-            // personTableAdapter
-            // 
-            this.personTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.PersonTableAdapter = this.personTableAdapter;
-            this.tableAdapterManager.UpdateOrder = AddressBook.infosys202114DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // btSave
             // 
@@ -234,32 +178,77 @@ namespace AddressBook {
             this.tbMemo.Size = new System.Drawing.Size(276, 102);
             this.tbMemo.TabIndex = 10;
             // 
-            // tbBirthdaySearch
+            // btBirthdayFilter
             // 
-            this.tbBirthdaySearch.Location = new System.Drawing.Point(300, 407);
-            this.tbBirthdaySearch.Name = "tbBirthdaySearch";
-            this.tbBirthdaySearch.Size = new System.Drawing.Size(182, 19);
-            this.tbBirthdaySearch.TabIndex = 4;
+            this.btBirthdayFilter.Location = new System.Drawing.Point(506, 400);
+            this.btBirthdayFilter.Name = "btBirthdayFilter";
+            this.btBirthdayFilter.Size = new System.Drawing.Size(82, 32);
+            this.btBirthdayFilter.TabIndex = 3;
+            this.btBirthdayFilter.Text = "誕生日抽出";
+            this.btBirthdayFilter.UseVisualStyleBackColor = true;
+            this.btBirthdayFilter.Click += new System.EventHandler(this.btBirthdayFilter_Click);
             // 
-            // button1
+            // dtpBirthdaySearch
             // 
-            this.button1.Location = new System.Drawing.Point(506, 400);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "名前抽出";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btNameFilter_Click);
+            this.dtpBirthdaySearch.Location = new System.Drawing.Point(300, 405);
+            this.dtpBirthdaySearch.Name = "dtpBirthdaySearch";
+            this.dtpBirthdaySearch.Size = new System.Drawing.Size(182, 19);
+            this.dtpBirthdaySearch.TabIndex = 8;
             // 
-            // button2
+            // dataGridViewTextBoxColumn1
             // 
-            this.button2.Location = new System.Drawing.Point(506, 400);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "誕生日抽出";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btNameFilter_Click);
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "No";
+            this.dataGridViewTextBoxColumn1.HeaderText = "No";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Birthday";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Birthday";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Telephone";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Telephone";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Memo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Memo";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // personBindingSource
+            // 
+            this.personBindingSource.DataMember = "Person";
+            this.personBindingSource.DataSource = this.infosys202114DataSet;
+            // 
+            // infosys202114DataSet
+            // 
+            this.infosys202114DataSet.DataSetName = "infosys202114DataSet";
+            this.infosys202114DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // personTableAdapter
+            // 
+            this.personTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.PersonTableAdapter = this.personTableAdapter;
+            this.tableAdapterManager.UpdateOrder = AddressBook.infosys202114DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // Form1
             // 
@@ -268,6 +257,7 @@ namespace AddressBook {
             this.ClientSize = new System.Drawing.Size(661, 450);
             this.Controls.Add(this.tbMemo);
             this.Controls.Add(this.tbTelephone);
+            this.Controls.Add(this.dtpBirthdaySearch);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.label4);
@@ -275,10 +265,8 @@ namespace AddressBook {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btSave);
-            this.Controls.Add(this.tbBirthdaySearch);
             this.Controls.Add(this.tbNameSearch);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btBirthdayFilter);
             this.Controls.Add(this.btNameFilter);
             this.Controls.Add(this.btConnect);
             this.Controls.Add(this.personDataGridView);
@@ -317,9 +305,8 @@ namespace AddressBook {
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.TextBox tbTelephone;
         private System.Windows.Forms.TextBox tbMemo;
-        private System.Windows.Forms.TextBox tbBirthdaySearch;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btBirthdayFilter;
+        private System.Windows.Forms.DateTimePicker dtpBirthdaySearch;
     }
 }
 
