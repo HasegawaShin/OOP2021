@@ -48,7 +48,6 @@ namespace SendMail {
 
         // 送信データ登録
         private void settingRegist() {
-            
         }
 
         // 設定画面をロードすると一度だけ実行されるイベントハンドラ
