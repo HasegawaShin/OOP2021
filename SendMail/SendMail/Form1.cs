@@ -21,13 +21,24 @@ namespace SendMail {
         private SmtpClient smtpClient = null;
 
         public Form1() {
-            // configForm.ShowDialog();
             InitializeComponent();
         }
 
         private void btSend_Click(object sender, EventArgs e) {
             if (! Settings.Set) {
                 MessageBox.Show("送信情報を設定してください");
+                return;
+            }
+
+            // 宛先情報が空の場合の処理
+            if (tbTo.Text == "" && tbCc.Text == "" && tbBcc.Text == "") {
+                MessageBox.Show("宛先情報が未入力です");
+                return;
+            }
+
+            // 本文が空白か空文字列だった場合の処理
+            if (tbMessage.Text == "" || tbMessage.Text == String.Empty) {
+                MessageBox.Show("本文入力が不正です");
                 return;
             }
 
@@ -73,6 +84,9 @@ namespace SendMail {
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+
+            // 送信中にボタンを押せなくする
+            btSend.Enabled = false;
         }
 
         // 送信完了時に呼ばれるイベント
@@ -80,8 +94,16 @@ namespace SendMail {
             if (e.Error != null) {
                 MessageBox.Show(e.Error.Message);
             } else {
+                // 送信完了で入力情報クリア
+                tbTo.Text = "";
+                tbCc.Text = "";
+                tbBcc.Text = "";
+                tbTitle.Text = "";
+                tbMessage.Text = "";
+
                 MessageBox.Show("送信完了");
             }
+            btSend.Enabled = true;
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
