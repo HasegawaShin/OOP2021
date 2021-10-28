@@ -46,7 +46,7 @@ namespace SendMail {
                 // ファイルがない場合の処理
                 catch (Exception ex) {
                     Set = false; // データ未設定
-                    MessageBox.Show(ex.Message);
+                    // MessageBox.Show(ex.Message);
                 }
             }
             return instance;

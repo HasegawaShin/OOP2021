@@ -173,22 +173,22 @@ namespace SendMail {
             // 新規作成ToolStripMenuItem
             // 
             this.新規作成ToolStripMenuItem.Name = "新規作成ToolStripMenuItem";
-            this.新規作成ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.新規作成ToolStripMenuItem.Text = "新規作成";
+            this.新規作成ToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.新規作成ToolStripMenuItem.Text = "新規作成(N)     Ctrl+Shift+N";
             this.新規作成ToolStripMenuItem.Click += new System.EventHandler(this.新規作成ToolStripMenuItem_Click);
             // 
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.設定ToolStripMenuItem.Text = "設定...";
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.設定ToolStripMenuItem.Text = "設定....               Ctrl+Shift+S";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.btConfig_Click);
             // 
             // 終了XToolStripMenuItem
             // 
             this.終了XToolStripMenuItem.Name = "終了XToolStripMenuItem";
-            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.終了XToolStripMenuItem.Text = "終了(X)";
+            this.終了XToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.終了XToolStripMenuItem.Text = "終了(X)                       Alt+F4";
             this.終了XToolStripMenuItem.Click += new System.EventHandler(this.終了XToolStripMenuItem_Click);
             // 
             // 編集EToolStripMenuItem
