@@ -97,11 +97,7 @@ namespace SendMail {
                 MessageBox.Show("送信完了");
 
                 // 送信完了で入力情報クリア
-                tbTo.Text = "";
-                tbCc.Text = "";
-                tbBcc.Text = "";
-                tbTitle.Text = "";
-                tbMessage.Text = "";
+                this.clear();
             }
             btSend.Enabled = true;
             smtpClient = null;
@@ -118,8 +114,22 @@ namespace SendMail {
             }
         }
 
+        
+
+        private void 新規作成ToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.clear();
+        }
+
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e) {
             Application.Exit();
+        }
+
+        public void clear() {
+            tbTo.Text = "";
+            tbCc.Text = "";
+            tbBcc.Text = "";
+            tbTitle.Text = "";
+            tbMessage.Text = "";
         }
     }
 }
