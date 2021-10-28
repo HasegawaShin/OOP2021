@@ -545,6 +545,7 @@ namespace CarReportSystem {
             this.carReportDataGridView.RowTemplate.Height = 21;
             this.carReportDataGridView.Size = new System.Drawing.Size(774, 220);
             this.carReportDataGridView.TabIndex = 22;
+            this.carReportDataGridView.SelectionChanged += new System.EventHandler(this.carReportDataGridView_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 

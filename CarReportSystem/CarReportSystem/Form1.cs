@@ -155,7 +155,10 @@ namespace CarReportSystem {
         }
 
         private void btConnect_Click(object sender, EventArgs e) {
+            // TODO: このコード行はデータを 'infosys202114DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
+            this.carReportTableAdapter.Fill(this.infosys202114DataSet.CarReport);
 
+#if false
             if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
                 try {
                     // バイナリ形式でシリアル化
@@ -184,13 +187,16 @@ namespace CarReportSystem {
                 //     setCbCarName(dgvRegistData.Rows[i].Cells[3].Value.ToString());
                 // }
             }
+#endif
 
         }
 
         private void fmMain_Load(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202114DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-            this.carReportTableAdapter.Fill(this.infosys202114DataSet.CarReport);
             // dgvRegistData.Columns[5].Visible = false;
+        }
+
+        private void carReportDataGridView_SelectionChanged(object sender, EventArgs e) {
+
         }
     }
 }
