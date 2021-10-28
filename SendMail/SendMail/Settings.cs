@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace SendMail {
@@ -45,6 +46,7 @@ namespace SendMail {
                 // ファイルがない場合の処理
                 catch (Exception ex) {
                     Set = false; // データ未設定
+                    MessageBox.Show(ex.Message);
                 }
             }
             return instance;
