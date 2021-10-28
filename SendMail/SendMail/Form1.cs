@@ -31,7 +31,7 @@ namespace SendMail {
             }
 
             // 宛先情報が空の場合の処理
-            if (tbTo.Text == "" && tbCc.Text == "" && tbBcc.Text == "") {
+            if (tbTo.Text == "") {
                 MessageBox.Show("宛先情報が未入力です");
                 return;
             }
@@ -65,7 +65,7 @@ namespace SendMail {
                 // SMTPを使ってメールを送信する
                 if (smtpClient == null) {
                     smtpClient = new SmtpClient();
-                    smtpClient.SendCompleted += SmtpClient_SendCompleted;
+                    //smtpClient.SendCompleted += SmtpClient_SendCompleted;
                 }
                 
                 // メール送信のための認証情報を設定(ユーザ名、パスワード)
@@ -93,17 +93,18 @@ namespace SendMail {
         private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e) {
             if (e.Error != null) {
                 MessageBox.Show(e.Error.Message);
-            } else {
+            } else { 
+                MessageBox.Show("送信完了");
+
                 // 送信完了で入力情報クリア
                 tbTo.Text = "";
                 tbCc.Text = "";
                 tbBcc.Text = "";
                 tbTitle.Text = "";
                 tbMessage.Text = "";
-
-                MessageBox.Show("送信完了");
             }
             btSend.Enabled = true;
+            smtpClient = null;
         }
 
         private void btConfig_Click(object sender, EventArgs e) {
