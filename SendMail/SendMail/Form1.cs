@@ -31,7 +31,7 @@ namespace SendMail {
             }
 
             // 宛先情報が空の場合の処理
-            if (tbTo.Text == "" && tbCc.Text == "" && tbBcc.Text == "") {
+            if (tbTo.Text == "") {
                 MessageBox.Show("宛先情報が未入力です");
                 return;
             }
