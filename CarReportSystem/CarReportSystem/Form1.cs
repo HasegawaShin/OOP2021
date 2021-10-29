@@ -125,13 +125,11 @@ namespace CarReportSystem {
         }
 
         private void btDataDelete_Click(object sender, EventArgs e) {
-            // listCarReport.RemoveAt(dgvRegistData.CurrentRow.Index);
+           
         }
 
         private void btDataCorrect_Click(object sender, EventArgs e) {
-            //listCarReport[dgvRegistData.CurrentRow.Index].UpDate(dtpDate.Value, cbAuthor.Text, selectedGroup(), 
-            //                                                    cbCarName.Text, tbReport.Text, pbPicture.Image);
-            //dgvRegistData.Refresh(); // コントロールの強制再描画
+           
         }
 
         private void btUpdate_Click(object sender, EventArgs e) {
@@ -207,7 +205,13 @@ namespace CarReportSystem {
         }
 
         private void fmMain_Load(object sender, EventArgs e) {
-            // dgvRegistData.Columns[5].Visible = false;
+            carReportDataGridView.Columns[0].Visible = false;
+            carReportDataGridView.Columns[1].HeaderText = "日付";
+            carReportDataGridView.Columns[2].HeaderText = "記録者";
+            carReportDataGridView.Columns[3].HeaderText = "メーカー";
+            carReportDataGridView.Columns[4].HeaderText = "車種";
+            carReportDataGridView.Columns[5].HeaderText = "レポート";
+            carReportDataGridView.Columns[6].HeaderText = "画像";
         }
 
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e) {
@@ -244,6 +248,17 @@ namespace CarReportSystem {
             return b;
         }
 
+        private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e) {
+            dtpDate.Value = DateTime.Now;
+            cbAuthor.Text = "";
+            setMakerRadioButton(CarReport.MakerGroup.その他);
+            cbCarName.Text = "";
+            tbReport.Text = "";
+            pbPicture.Image = null;
+        }
     }
 }
  
