@@ -17,7 +17,6 @@ namespace CarReportSystem {
 
         public fmMain() {
             InitializeComponent();
-            //dgvRegistData.DataSource = listCarReport;
         }
 
         // 終了ボタン
@@ -122,15 +121,7 @@ namespace CarReportSystem {
                     rbOther.Checked = true;
                     break;
             }
-        }
-
-        private void btDataDelete_Click(object sender, EventArgs e) {
-           
-        }
-
-        private void btDataCorrect_Click(object sender, EventArgs e) {
-           
-        }
+        }    
 
         private void btUpdate_Click(object sender, EventArgs e) {
 
@@ -149,59 +140,11 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202114DataSet);
-#if false
-            if (sfdFileSave.ShowDialog() == DialogResult.OK) {
-                try {
-                    // バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-
-                    using (FileStream fs = File.Open(sfdFileSave.FileName, FileMode.Create)) {
-                        bf.Serialize(fs, listCarReport);
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-                
-            }
-#endif
         }
 
         private void btConnect_Click(object sender, EventArgs e) {
             // TODO: このコード行はデータを 'infosys202114DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             this.carReportTableAdapter.Fill(this.infosys202114DataSet.CarReport);
-
-#if false
-            if (ofdFileOpen.ShowDialog() == DialogResult.OK) {
-                try {
-                    // バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-
-                    using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read)) {
-                        // 逆シリアル化して読み込む
-                        listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
-                        //dgvRegistData.DataSource = null;
-                        //dgvRegistData.DataSource = listCarReport;
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
-                }
-
-                // 読み込んだデータを各コンボボックスに登録する
-                foreach (var item in listCarReport) {
-                    setCbAuthor(item.Author);
-                    setCbCarName(item.CarName);
-                }
-
-                // データグリッドビューから取得
-                // for (int i = 0; i < dgvRegistData.RowCount; i++) {
-                //     setCbAuthor(dgvRegistData.Rows[i].Cells[1].Value.ToString());
-                //     setCbCarName(dgvRegistData.Rows[i].Cells[3].Value.ToString());
-                // }
-            }
-#endif
-
         }
 
         private void fmMain_Load(object sender, EventArgs e) {
@@ -212,6 +155,9 @@ namespace CarReportSystem {
             carReportDataGridView.Columns[4].HeaderText = "車種";
             carReportDataGridView.Columns[5].HeaderText = "レポート";
             carReportDataGridView.Columns[6].HeaderText = "画像";
+            //carReportDataGridView.Columns[6].Visible = false;
+
+            ssErrorLabel.Text = "";
         }
 
         private void carReportDataGridView_SelectionChanged(object sender, EventArgs e) {
@@ -220,6 +166,8 @@ namespace CarReportSystem {
             }
 
             try {
+                ssErrorLabel.Text = "";
+
                 dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value; // 日付
                 cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString(); // 記録者
                 setMakerRadioButton(
@@ -229,16 +177,23 @@ namespace CarReportSystem {
                 cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString(); // 車種
                 tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString(); // レポート
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value); // 画像
-            }
-            catch (Exception) {
+            } 
+            catch (InvalidCastException) {
                 pbPicture.Image = null;
-            }        
+            }
+            catch (Exception ex) {
+                ssErrorLabel.Text = ex.Message; // ステータスエリアに表示する
+            }
         }
 
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b) {
-            ImageConverter imgconv = new ImageConverter();
-            Image img = (Image)imgconv.ConvertFrom(b);
+            Image img = null;
+
+            if (b.Length > 0) {
+                ImageConverter imgconv = new ImageConverter();
+                img = (Image)imgconv.ConvertFrom(b);
+            }
             return img;
         }
         // Imageオブジェクトをバイト配列に変換
