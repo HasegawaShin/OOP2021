@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -44,9 +45,14 @@ namespace SendMail {
                     }
                 }
                 // ファイルがない場合の処理
-                catch (Exception ex) {
+                catch (FileNotFoundException fe) {
                     Set = false; // データ未設定
-                    // MessageBox.Show(ex.Message);
+                    // MessageBox.Show(fe.Message);
+                }
+                // その他の例外の処理
+                catch (Exception ex) {
+                    Set = false;
+                    MessageBox.Show(ex.Message, "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             return instance;
