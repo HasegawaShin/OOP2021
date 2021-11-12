@@ -29,12 +29,12 @@ namespace NumberGame {
 
         // ボタンがクリックされた時に呼ばれるイベントハンドラ
         private void Button_Click(object sender, RoutedEventArgs e) {
-            ChaageBackground((Button)e.Source);
+            ChangeBackground((Button)e.Source);
             ResultText((Button)e.Source);
         }
 
         // ボタンの背景色を変えるメソッド
-        private void ChaageBackground(Button button) {
+        private void ChangeBackground(Button button) {
             button.Background = Brushes.Gray;
         }
 
