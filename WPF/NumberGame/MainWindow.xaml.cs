@@ -47,6 +47,7 @@ namespace NumberGame {
             } else if (ANS < bt_num) {
                 Tb_result.Text = "もっと小さい数です";
             } else {
+                button.Background = Brushes.Red;
                 Tb_result.Text = "正解です";
             }
         }
