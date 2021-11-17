@@ -5,37 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberGame"
         mc:Ignorable="d"
-        Title="NumberGame" Height="900" Width="800">
+        Title="" Height="900" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition x:Name="ButtonRow" Height="Auto"/>
             <RowDefinition x:Name="ResulutRow" Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button x:Name="Bt_1" Content="1" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,0,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_2" Content="2" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,0,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_3" Content="3" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,0,0,0" Click="Button_Click" />
-        <Button x:Name="Bt_4" Content="4" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,0,0,0" Click="Button_Click" />
-        <Button x:Name="Bt_5" Content="5" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,0,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_6" Content="6" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,160,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_7" Content="7" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0160,160,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_8" Content="8" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,160,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_9" Content="9" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,160,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_10" Content="10" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,160,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_11" Content="11" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,320,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_12" Content="12" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,320,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_13" Content="13" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,320,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_14" Content="14" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,320,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_15" Content="15" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,320,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_16" Content="16" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,480,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_17" Content="17" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,480,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_18" Content="18" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,480,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_19" Content="19" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,480,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_20" Content="20" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,480,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_21" Content="21" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,640,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_22" Content="22" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,640,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_23" Content="23" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,640,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_24" Content="24" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,640,0,0" Click="Button_Click"/>
-        <Button x:Name="Bt_25" Content="25" FontSize="100" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,640,0,0" Click="Button_Click"/>
-        <TextBlock x:Name="Tb_result" FontSize="40" Grid.Row="1"/>
+        <Button x:Name="Bt_1" Content="1" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,0,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_2" Content="2" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,0,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_3" Content="3" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,0,0,0" Click="Button_Click" />
+        <Button x:Name="Bt_4" Content="4" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,0,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_5" Content="5" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,0,-8,0" Click="Button_Click"/>
+        <Button x:Name="Bt_6" Content="6" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,160,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_7" Content="7" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,160,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_8" Content="8" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,160,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_9" Content="9" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,160,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_10" Content="10" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,160,-8,0" Click="Button_Click"/>
+        <Button x:Name="Bt_11" Content="11" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,320,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_12" Content="12" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,320,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_13" Content="13" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,320,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_14" Content="14" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,320,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_15" Content="15" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,320,-8,0" Click="Button_Click"/>
+        <Button x:Name="Bt_16" Content="16" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,480,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_17" Content="17" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,480,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_18" Content="18" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,480,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_19" Content="19" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,480,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_20" Content="20" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,480,-8,0" Click="Button_Click"/>
+        <Button x:Name="Bt_21" Content="21" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="0,640,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_22" Content="22" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="160,640,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_23" Content="23" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="320,640,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_24" Content="24" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="480,640,0,0" Click="Button_Click"/>
+        <Button x:Name="Bt_25" Content="25" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160" Height="160" Margin="640,640,-8,0" Click="Button_Click"/>
+        <TextBlock x:Name="Tb_result" FontSize="40" Grid.Row="1" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

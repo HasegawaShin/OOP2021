@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace NumberGame {
     /// <summary>
@@ -19,12 +21,25 @@ namespace NumberGame {
     /// </summary>
     public partial class MainWindow : Window {
 
+        DispatcherTimer dt = new DispatcherTimer();
+        Stopwatch sw = new Stopwatch();
+
         Random random = new Random();
         private static int ANS = 0; // 答え
 
         public MainWindow() {
-            ANS = random.Next(1, 25); // ランダムな値を生成
+            ANS = random.Next(1, 26); // ランダムな値を生成
             InitializeComponent();
+
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
+            dt.Start();
+            sw.Start();
+            dt.Tick += Dt_Tick;
+            this.Title = "NumberGame [00:00:000]";
+        }
+
+        private void Dt_Tick(object sender, EventArgs e) {            
+            this.Title = "NumberGame [" + sw.Elapsed.ToString(@"mm\:ss\:fff") + "]";
         }
 
         // ボタンがクリックされた時に呼ばれるイベントハンドラ
@@ -47,7 +62,9 @@ namespace NumberGame {
             } else if (ANS < bt_num) {
                 Tb_result.Text = "もっと小さい数です";
             } else {
-                button.Background = Brushes.Red;
+                sw.Stop();
+                dt.Stop();
+                button.Background = Brushes.OrangeRed;
                 Tb_result.Text = "正解です";
             }
         }

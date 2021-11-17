@@ -41,6 +41,7 @@ namespace StopWatch {
             this.lbTimerDisp.Size = new System.Drawing.Size(253, 56);
             this.lbTimerDisp.TabIndex = 0;
             this.lbTimerDisp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTimerDisp.Click += new System.EventHandler(this.lbTimerDisp_Click);
             // 
             // btStart
             // 

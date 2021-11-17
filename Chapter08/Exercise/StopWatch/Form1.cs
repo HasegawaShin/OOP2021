@@ -49,5 +49,9 @@ namespace StopWatch {
         private void btLap_Click(object sender, EventArgs e) {
             lbLapDisp.Items.Add(sw.Elapsed.ToString(@"hh\:mm\:ss\.ff"));
         }
+
+        private void lbTimerDisp_Click(object sender, EventArgs e) {
+
+        }
     }
 }
