@@ -195,6 +195,22 @@ namespace CarReportSystem {
             this.tableAdapterManager.UpdateAll(this.infosys202114DataSet);
 
         }
+
+        //private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e) {
+        //    this.carReportTableAdapter.deleteRow(carReportDataGridView.CurrentRow.Cells[0].Value,
+        //                                         carReportDataGridView.CurrentRow.Cells[1].Value,
+        //                                         carReportDataGridView.CurrentRow.Cells[2].Value,
+        //                                         carReportDataGridView.CurrentRow.Cells[3].Value,
+        //                                         carReportDataGridView.CurrentRow.Cells[4].Value,
+        //                                         carReportDataGridView.CurrentRow.Cells[5].Value
+        //                                         );
+
+        //    //carReportDataGridView.CurrentRow.Cells[1].Value
+        //    //carReportDataGridView.CurrentRow.Cells[2].Value
+        //    //carReportDataGridView.CurrentRow.Cells[3].Value
+        //    //carReportDataGridView.CurrentRow.Cells[4].Value
+        //    //carReportDataGridView.CurrentRow.Cells[5].Value
+        //}
     }
 }
  
