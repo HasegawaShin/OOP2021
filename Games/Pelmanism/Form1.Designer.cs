@@ -45,7 +45,7 @@ namespace Pelmanism {
             this.labelGuidance.AutoSize = true;
             this.labelGuidance.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.labelGuidance.ForeColor = System.Drawing.Color.Red;
-            this.labelGuidance.Location = new System.Drawing.Point(112, 21);
+            this.labelGuidance.Location = new System.Drawing.Point(126, 24);
             this.labelGuidance.Name = "labelGuidance";
             this.labelGuidance.Size = new System.Drawing.Size(41, 12);
             this.labelGuidance.TabIndex = 1;
