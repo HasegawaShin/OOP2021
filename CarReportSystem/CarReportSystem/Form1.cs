@@ -37,28 +37,6 @@ namespace CarReportSystem {
             pbPicture.Image = null;
         }
 
-        // 追加ボタン
-        private void btDataAdd_Click(object sender, EventArgs e) {
-
-            if (cbAuthor.Text == "" || cbCarName.Text == "") {
-                MessageBox.Show("入力されていません", "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            CarReport carReport = new CarReport {
-                Date = dtpDate.Value,
-                Author = cbAuthor.Text,
-                Maker = selectedGroup(),
-                CarName = cbCarName.Text,
-                Report = tbReport.Text,
-                Picture = pbPicture.Image,
-            };
-            
-            listCarReport.Add(carReport);
-            setCbAuthor(cbAuthor.Text);
-            setCbCarName(cbCarName.Text);
-        }
-
         // 選択されているメーカーの列挙型を返す
         private CarReport.MakerGroup selectedGroup() {
             foreach (var rb in gbMaker.Controls) {
@@ -81,23 +59,6 @@ namespace CarReportSystem {
             if (!cbCarName.Items.Contains(carName)) {
                 cbCarName.Items.Add(carName);
             }
-        }
-
-        private void dgvRegistData_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex == -1) {
-                return;
-            } 
-            // 選択された行のデータを取得
-            CarReport selectedCar = listCarReport[e.RowIndex];
-
-            // 取得したデータ項目を各コントロールへ設定
-            dtpDate.Value = selectedCar.Date;
-            cbAuthor.Text = selectedCar.Author;
-            setMakerRadioButton(selectedCar.Maker);
-            cbCarName.Text = selectedCar.CarName;
-            tbReport.Text = selectedCar.Report;
-            pbPicture.Image = selectedCar.Picture;
-
         }
 
         private void setMakerRadioButton(CarReport.MakerGroup mg) {
