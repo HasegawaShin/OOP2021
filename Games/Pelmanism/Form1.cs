@@ -34,6 +34,8 @@ namespace Pelmanism {
         }
 
         private void FormGame_Load(object sender, EventArgs e) {
+            labelSec.Text = "残り0秒";
+
             // カードの生成
             CreateCards(ref playingCards);
             // プレイヤーの生成
@@ -150,7 +152,7 @@ namespace Pelmanism {
                 card.Close();
             }
             buttonStart.Enabled = false; // スタートボタン選択不可
-            gameSec = 0;
+            gameSec = 10;
             timer1.Start();
 
             labelGuidance.Text = "クリックしてめくってください";
@@ -173,8 +175,16 @@ namespace Pelmanism {
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
-            gameSec++;
-            labelSec.Text = gameSec + "秒経過";
+            if (gameSec > 0) {
+                labelSec.Text = "残り" + gameSec + "秒";
+                gameSec--;
+            } else {
+                player.Reset();
+                buttonStart.Enabled = true;
+                timer1.Stop();
+                MessageBox.Show("制限時間終了です。");
+            }
+
         }
     }
 }
