@@ -37,7 +37,7 @@ namespace SendMail {
             }
 
             // 本文が空白か空文字列だった場合の処理
-            if (tbMessage.Text == "" || tbMessage.Text == String.Empty) {
+            if (String.IsNullOrWhiteSpace(tbMessage.Text)) {
                 MessageBox.Show("本文入力が不正です");
                 return;
             }
